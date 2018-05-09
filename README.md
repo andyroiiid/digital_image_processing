@@ -1,2 +1,7 @@
 # digital_image_processing
-数字图像处课程实验，opencv实现
+
+数字图像处理课程实验
+
+用matlab和用opencv只不过是在狗屎和屎之间作出选择而已，一旦认清了这一点，这个选择就变得稍微困难了一些。
+
+另外点名批评ccv，听说你们是minimalist，那能不能解释一下你们巨大的git repo是怎么回事？
