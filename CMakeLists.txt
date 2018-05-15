@@ -12,3 +12,6 @@ target_link_libraries(exp2 ${OpenCV_LIBS})
 
 add_executable(exp3 exp3.cc)
 target_link_libraries(exp3 ${OpenCV_LIBS})
+
+add_executable(exp12 exp12.cc)
+target_link_libraries(exp12 ${OpenCV_LIBS})

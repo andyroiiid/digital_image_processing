@@ -53,31 +53,33 @@ int main(int argc, const char* argv[])
     double hist[256];
     getHistogram(image, hist, "Original Histogram");
 
-    double Ts[256];
-    double T = 0;
-    for (int i = 0; i < 256; i++) {
-        T += hist[i];
-        Ts[i] = T;
-    }
+    // double Ts[256];
+    // double T = 0;
+    // for (int i = 0; i < 256; i++) {
+    //     T += hist[i];
+    //     Ts[i] = T;
+    // }
 
-    // get the histogram mapping
-    int S[256];
-    for (int i = 0; i < 256; i++) {
-        S[i] = 0;
-        for (int j = 0; j < 256; j++) {
-            if (fabs(Ts[i] - j / 255.0) < fabs(Ts[i] - S[i] / 255.0)) {
-                S[i] = j;
-            }
-        }
-    }
+    // // get the histogram mapping
+    // int S[256];
+    // for (int i = 0; i < 256; i++) {
+    //     S[i] = 0;
+    //     for (int j = 0; j < 256; j++) {
+    //         if (fabs(Ts[i] - j / 255.0) < fabs(Ts[i] - S[i] / 255.0)) {
+    //             S[i] = j;
+    //         }
+    //     }
+    // }
 
-    Mat processed = image.clone();
-    for (int y = 0; y < processed.rows; y++) {
-        for (int x = 0; x < processed.cols; x++) {
-            uchar intensity = processed.at<uchar>(y, x);
-            processed.at<uchar>(y, x) = S[intensity];
-        }
-    }
+    Mat processed;
+    equalizeHist(image, processed);
+    // Mat processed = image.clone();
+    // for (int y = 0; y < processed.rows; y++) {
+    //     for (int x = 0; x < processed.cols; x++) {
+    //         uchar intensity = processed.at<uchar>(y, x);
+    //         processed.at<uchar>(y, x) = S[intensity];
+    //     }
+    // }
 
     namedWindow("Processed", WINDOW_AUTOSIZE);
     imshow("Processed", processed);
